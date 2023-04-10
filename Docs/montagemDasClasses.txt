@@ -1,0 +1,50 @@
+EXERCICIO PRATICO 2 - PROGRAMACAO MODULAR
+TEMA: IMOBILIARIA -  calcular o valor dos aluguéis
+
+classe: IMOVEL (mãe)
+
+METODOS:
+PRIVATE calcular valor dos acréscimos ()
+PUBLIC mostrar valor do imovel
+PRIVATE Calcular comissao por aluguel (12% de comissão)
+PUBLIC Buscar e imprimir dados de imóveis pelo ano de construção;
+PUBLIC Mostrar o ganho total da administradora com todos os imóveis.
+PUBLIC Mostrar valor bruto arrecadado com a propriedade
+PUBLIC Mostrar valor liquido arrecadado com a propriedade
+
+ATRIBUTOS:
+- valor de venda
+- endereço
+- ano de construção
+- STATIC FINAL MAX_DESCONTO = 30%
+- STATIC FINAL COMISSAO = 12%
+
+PERGUNTAS:
+SE EU PRECISO MOSTRAR O GANHO TOTAL COM TODOS OS IMOVEIS, COMO EU FAÇO ISSO?
+O QUE É VALOR BRUTO?
+O QUE É O VALOR LIQUIDO?
+=================================
+classe: CASA (filha)
+
+METODOS:
+private descontarValor( min de 5 anos e a cada 5 anos cai 10% e max 30% )
+private dividirValorAnualSeguro( /12)
+public valorInicial()
+public calcularValorAluguel ((dividirValorAnualSeguro + valorInicial + acrescimos) - descontarValor)
+
+ATRIBUTOS:
+valor inicial do aluguel é de 0,5% do valor de venda
+valor anual do seguro
+STATIC FINAL DEPRECIACAO = 10%
+=================================
+classe: APE (filha)
+
+METODOS:
+private descontarValor( min de 5 anos e a cada 5 anos cai 5% e max 30%)
+private calcularTaxaMensal()
+public calcularValorAluguel ((calcularTaxaMensal + valorInicial + acrescimos) - descontarValor)
+
+ATRIBUTOS:
+valor inicial do aluguel é de 0,4% do valor de venda
+taxa mensal de condominio
+STATIC FINAL DEPRECIACAO = 5%
