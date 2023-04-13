@@ -33,8 +33,11 @@ public class Main {
      * Metodo para mostrar ganho total com todos os imoveis
      */
     public double mostrarGanhoComTodosImoveis() {
-        double soma = 0;
-        return soma;
+        double somaTotal = 0;
+        for (Imovel cadaImovel : listImoveis) {
+            somaTotal += somaTotal;
+        }
+        return somaTotal;
     }
 
     public static void main(String[] args) {

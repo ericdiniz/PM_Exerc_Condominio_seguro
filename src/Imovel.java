@@ -1,7 +1,7 @@
 import java.util.Calendar;
 import java.util.List;
 
-public class Imovel {
+public abstract class Imovel {
     // constantes
     private static final float MAX_DESCONTO = 0.3F;
     private static final float COMISSAO = 0.12F;
@@ -61,4 +61,20 @@ public class Imovel {
     public double mostrarValorImovel() {
         return this.valorVenda;
     }
+
+    /**
+     * Metodo para calcular comissao por aluguel
+     */
+    public abstract double calcularComissaoPorAluguel();
+
+    /**
+     * Metodo para mostrar valor bruto com cada propriedade
+     */
+    public abstract double mostrarValorBrutoComCadaPropriedade();
+
+    /**
+     * Metodo para mostrar valor liquido com cada propriedade
+     */
+    public abstract double mostrarValorLiquidoComCadaPropriedade();
+
 }
