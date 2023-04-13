@@ -3,14 +3,15 @@ import java.util.List;
 
 public abstract class Imovel {
     // constantes
-    private static final float MAX_DESCONTO = 0.3F;
+    protected static final float MAX_DESCONTO = 0.3F;
     private static final float COMISSAO = 0.12F;
 
     // atributos
     private double valorVenda;
     private String endereco;
     private int anoConstrucao;
-    private List<Acrescimos> listAcrescimos;
+    protected List<Acrescimos> listAcrescimos;
+    private Calendar anoAtual;
 
     public double getValorVenda() {
         return valorVenda;
@@ -23,8 +24,6 @@ public abstract class Imovel {
     public int getAnoConstrucao() {
         return anoConstrucao;
     }
-
-    private Calendar anoAtual;
 
     // construtor
     public Imovel(double valorVenda, String endereco, int anoConstrucao) {
@@ -63,17 +62,17 @@ public abstract class Imovel {
     }
 
     /**
-     * Metodo para calcular comissao por aluguel
+     * Metodo ABSTRACT para calcular comissao por aluguel
      */
     public abstract double calcularComissaoPorAluguel();
 
     /**
-     * Metodo para mostrar valor bruto com cada propriedade
+     * Metodo ABSTRACT para mostrar valor bruto com cada propriedade
      */
     public abstract double mostrarValorBrutoComCadaPropriedade();
 
     /**
-     * Metodo para mostrar valor liquido com cada propriedade
+     * Metodo ABSTRACT para mostrar valor liquido com cada propriedade
      */
     public abstract double mostrarValorLiquidoComCadaPropriedade();
 
