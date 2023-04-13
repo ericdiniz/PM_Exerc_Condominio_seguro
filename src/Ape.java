@@ -12,7 +12,7 @@ public class Ape extends Imovel {
             int anoConstrucao,
             double taxaMensalCondominio,
             List<Acrescimos> acrescimos) {
-        super(valorVenda, endereco, anoConstrucao, acrescimos);
+        super(valorVenda, endereco, anoConstrucao);
         this.taxaMensalCondominio = taxaMensalCondominio;
     }
 

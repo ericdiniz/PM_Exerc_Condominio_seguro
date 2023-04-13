@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.List;
 
 public class Imovel {
@@ -9,13 +10,55 @@ public class Imovel {
     private double valorVenda;
     private String endereco;
     private int anoConstrucao;
-    private List<Acrescimos> acrescimos;
+    private List<Acrescimos> listAcrescimos;
 
-    public Imovel(double valorVenda, String endereco, int anoConstrucao, List<Acrescimos> acrescimos) {
-        this.valorVenda = valorVenda;
-        this.endereco = endereco;
-        this.anoConstrucao = anoConstrucao;
-        this.acrescimos = acrescimos;
+    public double getValorVenda() {
+        return valorVenda;
     }
 
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public int getAnoConstrucao() {
+        return anoConstrucao;
+    }
+
+    private Calendar anoAtual;
+
+    // construtor
+    public Imovel(double valorVenda, String endereco, int anoConstrucao) {
+        if (valorVenda > 0) {
+            this.valorVenda = valorVenda;
+        }
+
+        if (endereco.length() > 0) {
+            this.endereco = endereco;
+        }
+
+        if (anoConstrucao >= 1950 && anoConstrucao <= anoAtual.getWeekYear()) {
+            this.anoConstrucao = anoConstrucao;
+        }
+    }
+
+    // metodos
+
+    /**
+     * Metodo para adicionar o acréscimo na lista de acréscimos
+     *
+     * @param descricao
+     * @param quantidade
+     * @param valorAcrescimo
+     */
+    public void adicionarAcrescimoNaLista(String descricao, int quantidade, double valorAcrescimo) {
+        Acrescimos a = new Acrescimos(descricao, quantidade, valorAcrescimo);
+        this.listAcrescimos.add(a);
+    }
+
+    /**
+     * Metodo para mostrar o valor do imovel
+     */
+    public double mostrarValorImovel() {
+        return this.valorVenda;
+    }
 }

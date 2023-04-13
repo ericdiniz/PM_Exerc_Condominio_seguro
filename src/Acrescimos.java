@@ -16,4 +16,16 @@ public class Acrescimos {
             this.valorAcrescimo = valorAcrescimo;
         }
     }
+
+    public double calcularValorAcrescimos() {
+        return this.valorAcrescimo * this.quantidade;
+    }
+
+    public String mostrarAcrescimos() {
+        StringBuilder sg = new StringBuilder();
+        sg.append("Descrição: " + this.descricao + ", ")
+                .append("Quantidade: " + this.quantidade + ", ")
+                .append("Valor do Acréscimo: " + this.valorAcrescimo);
+        return sg.toString();
+    }
 }

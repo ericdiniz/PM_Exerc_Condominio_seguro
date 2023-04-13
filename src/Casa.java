@@ -12,8 +12,7 @@ public class Casa extends Imovel {
             int anoConstrucao,
             double valorAnualSeguro,
             List<Acrescimos> acrescimos) {
-        super(valorVenda, endereco, anoConstrucao, acrescimos);
+        super(valorVenda, endereco, anoConstrucao);
         this.valorAnualSeguro = valorAnualSeguro;
     }
-
 }
