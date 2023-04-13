@@ -1,17 +1,18 @@
+import java.util.List;
+
 public class Casa extends Imovel {
     // constantes
-    private static final double DEPRECIACAO = 0.1;
+    private static final float DEPRECIACAO = 0.12F;
     // atributos
     private double valorAnualSeguro;
 
     // construtor
-    public Casa(double valorVenda, String endereco, int anoConstrucao) {
-        super(valorVenda, endereco, anoConstrucao);
-        // TODO Auto-generated constructor stub
-    }
-
-    public Casa(double valorVenda, String endereco, int anoConstrucao, double valorAnualSeguro) {
-        super(valorVenda, endereco, anoConstrucao);
+    public Casa(double valorVenda,
+            String endereco,
+            int anoConstrucao,
+            double valorAnualSeguro,
+            List<Acrescimos> acrescimos) {
+        super(valorVenda, endereco, anoConstrucao, acrescimos);
         this.valorAnualSeguro = valorAnualSeguro;
     }
 

@@ -23,19 +23,26 @@ PERGUNTAS:
 SE EU PRECISO MOSTRAR O GANHO TOTAL COM TODOS OS IMOVEIS, COMO EU FAÇO ISSO?
 O QUE É VALOR BRUTO?
 O QUE É O VALOR LIQUIDO?
+COMO FUNCIONA O VALOR DOS ACRESCIMOS?
+COMO FUNCIONA O BUSCAR POR ANO DE construção?
+COMO FUNCIONA O GANHO TOTAL COM OS IMOVEIS? É COM A SOMA DAS COMISSOES?
+criar classe beneficio
 =================================
 classe: CASA (filha)
 
 METODOS:
 private descontarValor( min de 5 anos e a cada 5 anos cai 10% e max 30% )
 private dividirValorAnualSeguro( /12)
-public valorInicial()
 public calcularValorAluguel ((dividirValorAnualSeguro + valorInicial + acrescimos) - descontarValor)
+public valorInicial(valor inicial do aluguel é de 0,5% do valor de venda)
 
 ATRIBUTOS:
 valor inicial do aluguel é de 0,5% do valor de venda
 valor anual do seguro
 STATIC FINAL DEPRECIACAO = 10%
+
+PERGUNTAS:
+
 =================================
 classe: APE (filha)
 
@@ -43,8 +50,16 @@ METODOS:
 private descontarValor( min de 5 anos e a cada 5 anos cai 5% e max 30%)
 private calcularTaxaMensal()
 public calcularValorAluguel ((calcularTaxaMensal + valorInicial + acrescimos) - descontarValor)
+public valorInicial(esta alíquota é de 0,4%)
 
 ATRIBUTOS:
 valor inicial do aluguel é de 0,4% do valor de venda
 taxa mensal de condominio
 STATIC FINAL DEPRECIACAO = 5%
+
+PERGUNTAS:
+COMO FUNCIONA ESSA TAXA MENSAL:
+EU PEGO A TAXA DE ONDE?
+Todo apartamento paga uma taxa mensal, pré-definida, de condomínio.
+Este valor será cobrado junto ao valor do aluguel,
+porém não é repassado nem ao proprietário nem à imobiliária.
