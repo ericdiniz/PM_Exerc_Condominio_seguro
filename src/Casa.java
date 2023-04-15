@@ -1,12 +1,11 @@
 import java.util.Calendar;
-import java.util.List;
 
 public class Casa extends Imovel {
     // constantes
     private static final float DEPRECIACAO = 0.10F;
     // atributos
     private double valorAnualSeguro;
-    protected Calendar anoAtual;
+    Calendar c = Calendar.getInstance();
 
     // construtor
     public Casa(double valorVenda,
@@ -21,27 +20,13 @@ public class Casa extends Imovel {
     /**
      * METODO PARA CALCULAR VALOR A DESCONTAR (DEPRECIACAO)
      */
-    private double descontarValor() {
-        double resultado = 0;
-        float tempo = 0.0F;
-        // logica
-        /*
-         * a partir de 5 anos
-         * a cada 5 anos cai 0,1
-         * maximo 0,3
-         */
-        int i = this.anoAtual.getWeekYear() - 5;
-        int j = this.anoAtual.getWeekYear() - this.getAnoConstrucao();
-        while (i >= this.getAnoConstrucao() || tempo <= MAX_DESCONTO) {
-            if (j < 5) {
-                resultado = 0;
-                return resultado;
-            }
-            tempo += 0.1;
-            i -= 5;
+    private double descontarValor(double valorInicial) {
+        int ciclos = (c.get(Calendar.YEAR) - this.anoConstrucao) / 5; // 2023 - 2018 = 5
+        if (ciclos > 3) {
+            return valorInicial * MAX_DESCONTO;
+        } else {
+            return valorInicial * (DEPRECIACAO * ciclos);
         }
-        resultado = tempo;
-        return resultado;
     }
 
     /**
@@ -51,8 +36,9 @@ public class Casa extends Imovel {
      */
     public double calcularValorInicial() {
         double resultado = 0;
-        resultado = 0.05 * getValorVenda();
-        return resultado;
+        resultado = 0.05 * this.valorVenda;
+        double x = descontarValor(resultado);
+        return resultado - x;
     }
 
     /**
@@ -61,36 +47,48 @@ public class Casa extends Imovel {
      * @return valorFinalAlguel
      */
     public double calcularValorAluguel() {
-        double resultado = 0;
-        double soma = 0;
+        double somaAc = 0;
         for (Acrescimos cadaAc : listAcrescimos) {
-            soma += cadaAc.calcularValorAcrescimos();
+            somaAc += cadaAc.calcularValorAcrescimos();
         }
-        double valorQuaseFinal = (this.dividirValorAnualSeguro() + this.calcularValorInicial() + soma);
-        resultado = (valorQuaseFinal - (descontarValor() * valorQuaseFinal));
-        return resultado;
+        return (this.calcularValorInicial() + somaAc + this.dividirValorAnualSeguro());
     }
 
+    /**
+     * METODO PARA CALCULAR O VALOR MENSAL DO SEGURO ANUAL
+     */
     private double dividirValorAnualSeguro() {
         return this.valorAnualSeguro / 12;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder descricao = new StringBuilder();
+        descricao
+                .append("Descrição do imovel: ")
+                .append("id: " + getId())
+                .append(", ")
+                .append("valor aluguel: " + calcularValorAluguel())
+                .append(", ")
+                .append("endereço: " + getEndereco())
+                .append(", ")
+                .append("ano construção: " + getAnoConstrucao());
+        return descricao.toString();
     }
 
     // METODOS ABSTRATOS
     @Override
     public double calcularComissaoPorAluguel() {
-        double soma = 0;
-        return soma;
+        return COMISSAO * this.calcularValorInicial();
     }
 
     @Override
     public double mostrarValorBrutoComCadaPropriedade() {
-        double soma = 0;
-        return soma;
+        return this.calcularValorInicial();
     }
 
     @Override
     public double mostrarValorLiquidoComCadaPropriedade() {
-        double soma = 0;
-        return soma;
+        return this.calcularValorAluguel() - this.calcularComissaoPorAluguel() - this.dividirValorAnualSeguro();
     }
 }

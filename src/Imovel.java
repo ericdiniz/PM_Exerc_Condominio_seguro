@@ -1,28 +1,31 @@
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public abstract class Imovel {
     // constantes
     protected static final float MAX_DESCONTO = 0.3F;
-    private static final float COMISSAO = 0.12F;
+    protected static final float COMISSAO = 0.12F;
 
     // atributos
-    private double valorVenda;
-    private String endereco;
-    private int anoConstrucao;
-    protected List<Acrescimos> listAcrescimos;
-    private Calendar anoAtual;
+    private static int proximo_id = 1;
+    private int id;
+    protected double valorVenda;
+    protected String endereco;
+    protected int anoConstrucao;
+    List<Acrescimos> listAcrescimos = new ArrayList<>();
+    Calendar c = Calendar.getInstance();
 
-    public double getValorVenda() {
-        return valorVenda;
+    public int getAnoConstrucao() {
+        return this.anoConstrucao;
     }
 
     public String getEndereco() {
-        return endereco;
+        return this.endereco;
     }
 
-    public int getAnoConstrucao() {
-        return anoConstrucao;
+    public int getId() {
+        return this.id;
     }
 
     // construtor
@@ -35,9 +38,11 @@ public abstract class Imovel {
             this.endereco = endereco;
         }
 
-        if (anoConstrucao >= 1950 && anoConstrucao <= anoAtual.getWeekYear()) {
+        if (anoConstrucao >= 1950 && anoConstrucao <= c.get(Calendar.YEAR)) {
             this.anoConstrucao = anoConstrucao;
         }
+        this.id = proximo_id;
+        proximo_id++;
     }
 
     // metodos
@@ -45,16 +50,24 @@ public abstract class Imovel {
     /**
      * Metodo para adicionar o acréscimo na lista de acréscimos
      *
-     * @param descricao
-     * @param quantidade
-     * @param valorAcrescimo
+     * @param Objeto Acrescimos
      */
-    public void adicionarAcrescimoNaLista(String descricao, int quantidade, double valorAcrescimo) {
-        Acrescimos a = new Acrescimos(descricao, quantidade, valorAcrescimo);
-        this.listAcrescimos.add(a);
+    public void adicionarAcrescimoNaLista(Acrescimos novoAcrescimo) {
+        this.listAcrescimos.add(novoAcrescimo);
     }
 
     /**
+     * Metodo para MOSTRAR todos os acrescimos da propriedade
+     */
+    public void mostrarTodosAcrescimos() {
+        for (Acrescimos acrescimos : listAcrescimos) {
+            System.out.println(acrescimos.mostrarAcrescimos());
+        }
+
+    }
+
+    /**
+     *
      * Metodo para mostrar o valor do imovel
      */
     public double mostrarValorImovel() {
