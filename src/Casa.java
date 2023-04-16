@@ -3,9 +3,10 @@ import java.util.Calendar;
 public class Casa extends Imovel {
     // constantes
     private static final float DEPRECIACAO = 0.10F;
+    Calendar c = Calendar.getInstance();
+
     // atributos
     private double valorAnualSeguro;
-    Calendar c = Calendar.getInstance();
 
     // construtor
     public Casa(double valorVenda,
@@ -13,6 +14,14 @@ public class Casa extends Imovel {
             int anoConstrucao,
             double valorAnualSeguro) {
         super(valorVenda, endereco, anoConstrucao);
+        this.valorAnualSeguro = valorAnualSeguro;
+    }
+
+    public double getValorAnualSeguro() {
+        return valorAnualSeguro;
+    }
+
+    public void setValorAnualSeguro(double valorAnualSeguro) {
         this.valorAnualSeguro = valorAnualSeguro;
     }
 

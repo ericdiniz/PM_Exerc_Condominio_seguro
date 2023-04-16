@@ -2,10 +2,10 @@ import java.util.Calendar;
 
 public class Ape extends Imovel {
     // constantes
+    Calendar c = Calendar.getInstance();
     private static final float DEPRECIACAO = 0.05F;
     // atributos
     private double taxaMensalCondominio;
-    Calendar c = Calendar.getInstance();
 
     // construtor
     public Ape(double valorVenda,
@@ -13,6 +13,14 @@ public class Ape extends Imovel {
             int anoConstrucao,
             double taxaMensalCondominio) {
         super(valorVenda, endereco, anoConstrucao);
+        this.taxaMensalCondominio = taxaMensalCondominio;
+    }
+
+    public double getTaxaMensalCondominio() {
+        return taxaMensalCondominio;
+    }
+
+    public void setTaxaMensalCondominio(double taxaMensalCondominio) {
         this.taxaMensalCondominio = taxaMensalCondominio;
     }
 

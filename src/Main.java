@@ -38,7 +38,7 @@ public class Main {
         System.out.println("IMOBILIARIA XULAMBS");
         System.out.println("==========================");
         System.out.println("1 - CRIAR IMOVEL");
-        System.out.println("2 - ADICIONAR ACRÉSCIMOS");
+        System.out.println("2 - TUDO SOBRE O IMOVEL");
         System.out.println("3 - MOSTRAR TODOS IMOVEIS");
         System.out.println("4 - MOSTRAR GANHOS TOTAIS");
         System.out.println("5 - BUSCAR IMOVEIS POR ANO");
@@ -95,6 +95,36 @@ public class Main {
         System.out.println("");
         System.out.println("==========================");
         System.out.println("1 - adicionar mais um");
+        System.out.println("0 - Sair");
+        System.out.print("\nSua opção: ");
+        int opcao = Integer.parseInt(entrada.nextLine());
+        return opcao;
+    }
+
+    public static int escolherCampoParaAlterar_Ape() {
+        System.out.println("");
+        System.out.println("==========================");
+        System.out.println("Veja os campos e escolha um para alterar: ");
+        System.out.println("1 - Valor de venda");
+        System.out.println("2 - Endereço");
+        System.out.println("3 - Ano de construção");
+        System.out.println("4 - Taxa mensal de condomínio");
+
+        System.out.println("0 - Sair");
+        System.out.print("\nSua opção: ");
+        int opcao = Integer.parseInt(entrada.nextLine());
+        return opcao;
+    }
+
+    public static int escolherCampoParaAlterar_Casa() {
+        System.out.println("");
+        System.out.println("==========================");
+        System.out.println("Veja os campos e escolha um para alterar: ");
+        System.out.println("1 - Valor de venda");
+        System.out.println("2 - Endereço");
+        System.out.println("3 - Ano de construção");
+        System.out.println("4 - Valor anual do seguro");
+
         System.out.println("0 - Sair");
         System.out.print("\nSua opção: ");
         int opcao = Integer.parseInt(entrada.nextLine());
@@ -222,9 +252,74 @@ public class Main {
     }
 
     public static void atualizarImovel(int idImovel) {
+        int opcao = -1;
         for (Imovel imovel : listImoveis) {
             if (idImovel == imovel.getId()) {
                 // codigo de atualização
+                if (imovel.getClass().getName() == "Ape") {
+                    opcao = escolherCampoParaAlterar_Ape();
+                    System.out.println("==========================");
+                    switch (opcao) {
+                        case 1:
+                            System.out.println("1 - Novo valor para: Valor de venda");
+                            double valor = entrada.nextDouble();
+                            imovel.setValorVenda(valor);
+                            clearBuffer(entrada);
+                            break;
+                        case 2:
+                            System.out.println("2 - Novo valor para: Endereço");
+                            String end = entrada.nextLine();
+                            imovel.setEndereco(end);
+                            break;
+                        case 3:
+                            System.out.println("3 - Novo valor para: Ano de construção");
+                            int ano = entrada.nextInt();
+                            imovel.setAnoConstrucao(ano);
+                            clearBuffer(entrada);
+                            break;
+                        case 4:
+                            System.out.println("4 - Novo valor para: Taxa mensal de condomínio");
+                            double taxa = entrada.nextDouble();
+                            // imovel.setTaxaMensalCondominio(taxa);
+                            clearBuffer(entrada);
+                            break;
+
+                        default:
+                            System.out.println("Opção inválida");
+                            break;
+                    }
+                } else {
+                    opcao = escolherCampoParaAlterar_Casa();
+                    switch (opcao) {
+                        case 1:
+                            System.out.println("1 - Novo valor para: Valor de venda");
+                            double valor = entrada.nextDouble();
+                            imovel.setValorVenda(valor);
+                            clearBuffer(entrada);
+                            break;
+                        case 2:
+                            System.out.println("2 - Novo valor para: Endereço");
+                            String end = entrada.nextLine();
+                            imovel.setEndereco(end);
+                            break;
+                        case 3:
+                            System.out.println("3 - Novo valor para: Ano de construção");
+                            int ano = entrada.nextInt();
+                            imovel.setAnoConstrucao(ano);
+                            clearBuffer(entrada);
+                            break;
+                        case 4:
+                            System.out.println("4 - Novo valor para: Valor anual do seguro");
+                            double seg = entrada.nextDouble();
+                            // imovel.setValorAnualSeguro(seg);
+                            clearBuffer(entrada);
+                            break;
+
+                        default:
+                            System.out.println("Opção inválida");
+                            break;
+                    }
+                }
             }
         }
     }

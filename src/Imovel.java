@@ -6,6 +6,7 @@ public abstract class Imovel {
     // constantes
     protected static final float MAX_DESCONTO = 0.3F;
     protected static final float COMISSAO = 0.12F;
+    Calendar c = Calendar.getInstance();
 
     // atributos
     private static int proximo_id = 1;
@@ -14,19 +15,6 @@ public abstract class Imovel {
     protected String endereco;
     protected int anoConstrucao;
     List<Acrescimos> listAcrescimos = new ArrayList<>();
-    Calendar c = Calendar.getInstance();
-
-    public int getAnoConstrucao() {
-        return this.anoConstrucao;
-    }
-
-    public String getEndereco() {
-        return this.endereco;
-    }
-
-    public int getId() {
-        return this.id;
-    }
 
     // construtor
     public Imovel(double valorVenda, String endereco, int anoConstrucao) {
@@ -43,6 +31,30 @@ public abstract class Imovel {
         }
         this.id = proximo_id;
         proximo_id++;
+    }
+
+    public void setValorVenda(double valorVenda) {
+        this.valorVenda = valorVenda;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setAnoConstrucao(int anoConstrucao) {
+        this.anoConstrucao = anoConstrucao;
+    }
+
+    public int getAnoConstrucao() {
+        return this.anoConstrucao;
+    }
+
+    public String getEndereco() {
+        return this.endereco;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     // metodos
