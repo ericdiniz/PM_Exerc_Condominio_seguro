@@ -60,8 +60,7 @@ public class Main {
         System.out.println("4 - CALCULAR COMISSAO POR PROPRIEDADE");
         System.out.println("5 - VALOR BRUTO POR PROPRIEDADE");
         System.out.println("6 - VALOR LIQUIDO POR PROPRIEDADE");
-        System.out.println("7 - ATUALIZAR IMOVEL");
-        System.out.println("8 - REMOVER IMOVEL");
+        System.out.println("7 - REMOVER IMOVEL");
 
         System.out.println("0 - SAIR");
         System.out.print("\nSua opção: ");
@@ -251,78 +250,78 @@ public class Main {
         }
     }
 
-    public static void atualizarImovel(int idImovel) {
-        int opcao = -1;
-        for (Imovel imovel : listImoveis) {
-            if (idImovel == imovel.getId()) {
-                // codigo de atualização
-                if (imovel.getClass().getName() == "Ape") {
-                    opcao = escolherCampoParaAlterar_Ape();
-                    System.out.println("==========================");
-                    switch (opcao) {
-                        case 1:
-                            System.out.println("1 - Novo valor para: Valor de venda");
-                            double valor = entrada.nextDouble();
-                            imovel.setValorVenda(valor);
-                            clearBuffer(entrada);
-                            break;
-                        case 2:
-                            System.out.println("2 - Novo valor para: Endereço");
-                            String end = entrada.nextLine();
-                            imovel.setEndereco(end);
-                            break;
-                        case 3:
-                            System.out.println("3 - Novo valor para: Ano de construção");
-                            int ano = entrada.nextInt();
-                            imovel.setAnoConstrucao(ano);
-                            clearBuffer(entrada);
-                            break;
-                        case 4:
-                            System.out.println("4 - Novo valor para: Taxa mensal de condomínio");
-                            // double taxa = entrada.nextDouble();
-                            // imovel.setTaxaMensalCondominio(taxa);
-                            clearBuffer(entrada);
-                            break;
+    // public static void atualizarImovel(int idImovel) {
+    // int opcao = -1;
+    // for (Imovel imovel : listImoveis) {
+    // if (idImovel == imovel.getId()) {
+    // // codigo de atualização
+    // if (imovel.getClass().getName() == "Ape") {
+    // opcao = escolherCampoParaAlterar_Ape();
+    // System.out.println("==========================");
+    // switch (opcao) {
+    // case 1:
+    // System.out.println("1 - Novo valor para: Valor de venda");
+    // double valor = entrada.nextDouble();
+    // imovel.setValorVenda(valor);
+    // clearBuffer(entrada);
+    // break;
+    // case 2:
+    // System.out.println("2 - Novo valor para: Endereço");
+    // String end = entrada.nextLine();
+    // imovel.setEndereco(end);
+    // break;
+    // case 3:
+    // System.out.println("3 - Novo valor para: Ano de construção");
+    // int ano = entrada.nextInt();
+    // imovel.setAnoConstrucao(ano);
+    // clearBuffer(entrada);
+    // break;
+    // case 4:
+    // System.out.println("4 - Novo valor para: Taxa mensal de condomínio");
+    // // double taxa = entrada.nextDouble();
+    // // imovel.setTaxaMensalCondominio(taxa);
+    // clearBuffer(entrada);
+    // break;
 
-                        default:
-                            System.out.println("Opção inválida");
-                            break;
-                    }
-                } else {
-                    opcao = escolherCampoParaAlterar_Casa();
-                    switch (opcao) {
-                        case 1:
-                            System.out.println("1 - Novo valor para: Valor de venda");
-                            double valor = entrada.nextDouble();
-                            imovel.setValorVenda(valor);
-                            clearBuffer(entrada);
-                            break;
-                        case 2:
-                            System.out.println("2 - Novo valor para: Endereço");
-                            String end = entrada.nextLine();
-                            imovel.setEndereco(end);
-                            break;
-                        case 3:
-                            System.out.println("3 - Novo valor para: Ano de construção");
-                            int ano = entrada.nextInt();
-                            imovel.setAnoConstrucao(ano);
-                            clearBuffer(entrada);
-                            break;
-                        case 4:
-                            System.out.println("4 - Novo valor para: Valor anual do seguro");
-                            // double seg = entrada.nextDouble();
-                            // imovel.setValorAnualSeguro(seg);
-                            clearBuffer(entrada);
-                            break;
+    // default:
+    // System.out.println("Opção inválida");
+    // break;
+    // }
+    // } else {
+    // opcao = escolherCampoParaAlterar_Casa();
+    // switch (opcao) {
+    // case 1:
+    // System.out.println("1 - Novo valor para: Valor de venda");
+    // double valor = entrada.nextDouble();
+    // imovel.setValorVenda(valor);
+    // clearBuffer(entrada);
+    // break;
+    // case 2:
+    // System.out.println("2 - Novo valor para: Endereço");
+    // String end = entrada.nextLine();
+    // imovel.setEndereco(end);
+    // break;
+    // case 3:
+    // System.out.println("3 - Novo valor para: Ano de construção");
+    // int ano = entrada.nextInt();
+    // imovel.setAnoConstrucao(ano);
+    // clearBuffer(entrada);
+    // break;
+    // case 4:
+    // System.out.println("4 - Novo valor para: Valor anual do seguro");
+    // // double seg = entrada.nextDouble();
+    // // imovel.setValorAnualSeguro(seg);
+    // clearBuffer(entrada);
+    // break;
 
-                        default:
-                            System.out.println("Opção inválida");
-                            break;
-                    }
-                }
-            }
-        }
-    }
+    // default:
+    // System.out.println("Opção inválida");
+    // break;
+    // }
+    // }
+    // }
+    // }
+    // }
 
     private static void clearBuffer(Scanner scanner) {
         if (scanner.hasNextLine()) {
@@ -382,12 +381,6 @@ public class Main {
                             }
                             break;
                         case 7:
-                            if (novoImovel != null) {
-                                int idImovel = subEscolherImovel();
-                                atualizarImovel(idImovel);
-                            }
-                            break;
-                        case 8:
                             if (novoImovel != null) {
                                 int idImovel = subEscolherImovel();
                                 removerImovelDaLista(idImovel);
