@@ -279,7 +279,7 @@ public class Main {
                             break;
                         case 4:
                             System.out.println("4 - Novo valor para: Taxa mensal de condomínio");
-                            double taxa = entrada.nextDouble();
+                            // double taxa = entrada.nextDouble();
                             // imovel.setTaxaMensalCondominio(taxa);
                             clearBuffer(entrada);
                             break;
@@ -310,7 +310,7 @@ public class Main {
                             break;
                         case 4:
                             System.out.println("4 - Novo valor para: Valor anual do seguro");
-                            double seg = entrada.nextDouble();
+                            // double seg = entrada.nextDouble();
                             // imovel.setValorAnualSeguro(seg);
                             clearBuffer(entrada);
                             break;
